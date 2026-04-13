@@ -3,19 +3,16 @@
   "description": "Forces AI to understand before executing. Three disciplines: cognition check, requirement understanding, method search.",
   "version": "1.0.0",
   "author": {
-    "name": "Recomby AI"
+    "name": "Recomby AI",
+    "email": "hello@recomby.ai"
   },
-  "hooks": {
-    "UserPromptSubmit": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 $PLUGIN_DIR/skill/scripts/intercept.py"
-          }
-        ]
-      }
-    ]
-  }
+  "repository": "https://github.com/recomby-ai/promptly-prompt",
+  "license": "MIT",
+  "keywords": [
+    "prompt-optimization",
+    "context-engineering",
+    "hooks",
+    "cognition",
+    "understanding"
+  ]
 }

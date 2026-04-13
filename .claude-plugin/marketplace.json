@@ -1,9 +1,20 @@
 {
   "name": "promptly-prompt",
+  "description": "Forces AI to understand before executing",
+  "owner": {
+    "name": "Recomby AI",
+    "email": "hello@recomby.ai"
+  },
   "plugins": [
     {
       "name": "promptly-prompt",
-      "skills": ["./skill"]
+      "description": "Three disciplines: cognition check, requirement understanding, method search",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "Recomby AI",
+        "email": "hello@recomby.ai"
+      }
     }
   ]
 }
