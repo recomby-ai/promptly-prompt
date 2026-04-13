@@ -3,9 +3,9 @@
 
 Fires on every UserPromptSubmit. Simple prompts pass through.
 Complex prompts inject the promptly-prompt discipline:
-  1. AI capability boundaries (what can/can't do, missing context, biases)
-  2. Requirement understanding (including implicit needs, audience, constraints)
-  3. Method search (existing frameworks/tools/patterns before building)
+  1. AI cognition baseline
+  2. Deep requirement understanding (including implicit needs)
+  3. Search for existing methods/frameworks before acting
 
 No external dependencies. Python stdlib only.
 """
@@ -47,20 +47,31 @@ def count_sentences(text: str) -> int:
     return sum(1 for p in parts if p.strip())
 
 
+def word_count(text: str) -> int:
+    # Chinese: count characters directly; mixed/English: count split tokens
+    cjk = sum(1 for c in text if "\u4e00" <= c <= "\u9fff")
+    if cjk > len(text) * 0.3:
+        return len(text.replace(" ", ""))
+    return len(text.split())
+
+
 def score(prompt: str) -> int:
     s = 0
     if len(prompt.strip()) < 10:
         s -= 3
-    if len(prompt.split()) > 80:
+    if word_count(prompt) > 80:
         s += 2
+    elif word_count(prompt) > 40:
+        s += 1
     if count_sentences(prompt) > 3:
         s += 1
     if prompt.count("?") + prompt.count("？") > 1:
         s += 1
-    if MULTI_STEP.search(prompt):
-        s += 2
-    if AMBIGUITY.search(prompt):
-        s += 1
+    # Additive: each match contributes, capped at +3
+    multi_hits = len(MULTI_STEP.findall(prompt))
+    s += min(multi_hits * 2, 3)
+    ambig_hits = len(AMBIGUITY.findall(prompt))
+    s += min(ambig_hits, 3)
     if CODE_BLOCK.search(prompt):
         s -= 2
     if IMPERATIVE_START.match(prompt.strip()):
