@@ -8,9 +8,9 @@ A Claude Code skill that forces AI to **understand before executing**.
 
 A `UserPromptSubmit` hook that automatically intercepts complex requests and injects three disciplines:
 
-1. **Cognition Check** — Reminds AI of its limitations: hallucination, context dependency, amplifier not replacer.
-2. **Requirement Understanding** — Forces AI to deeply understand your request (including implicit needs), show its understanding, and wait for your confirmation before executing.
-3. **Method Search** — Forces AI to search for existing methodologies, frameworks, open-source projects, and proven patterns before building from scratch.
+1. **AI Capability Boundaries** — Forces AI to state what it can and can't do for this specific task, what context it's missing, and what biases it has in this domain.
+2. **Requirement Understanding** — Forces AI to deeply understand your request, surface implicit needs (audience, downstream use, unstated constraints, failure modes), flag ambiguities, and wait for your confirmation before executing.
+3. **Method Search** — Forces AI to search for existing methodologies, frameworks, open-source projects, and proven patterns before building from scratch. Use tools to search, give specific names, not vague suggestions.
 
 Simple commands (`git status`, `read file.py`, `/commit`) pass through untouched.
 
