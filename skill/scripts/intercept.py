@@ -3,9 +3,9 @@
 
 Fires on every UserPromptSubmit. Simple prompts pass through.
 Complex prompts inject the promptly-prompt discipline:
-  1. AI cognition baseline
-  2. Deep requirement understanding (including implicit needs)
-  3. Search for existing methods/frameworks before acting
+  1. AI capability boundaries (what can/can't do, missing context, biases)
+  2. Requirement understanding (including implicit needs, audience, constraints)
+  3. Method search (existing frameworks/tools/patterns before building)
 
 No external dependencies. Python stdlib only.
 """
