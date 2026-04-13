@@ -36,6 +36,12 @@ Or inside a Claude Code session, prefix with `!`:
 ! claude plugin install promptly-prompt@promptly-prompt
 ```
 
+### Uninstall
+
+```bash
+claude plugin uninstall promptly-prompt@promptly-prompt
+```
+
 ### One-line install
 
 ```bash
