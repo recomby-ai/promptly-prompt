@@ -20,6 +20,16 @@ When your brain is foggy, you write bad prompts, get bad answers, and spiral. Th
 
 ## Install
 
+### One-line install
+
+```bash
+git clone https://github.com/recomby-ai/promptly-prompt.git && cd promptly-prompt && bash install.sh
+```
+
+This copies skill files to `~/.claude/skills/promptly-prompt/` and auto-configures the hook in `settings.json`. Start a new Claude Code session to activate.
+
+### Manual install
+
 1. Copy to your Claude Code skills directory:
 
 ```bash
