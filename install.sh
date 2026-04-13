@@ -10,10 +10,9 @@ SETTINGS="$HOME/.claude/settings.json"
 echo "Installing promptly-prompt..."
 
 # 1. Copy skill files
-mkdir -p "$SKILL_DIR/scripts" "$SKILL_DIR/docs"
-cp SKILL.md "$SKILL_DIR/"
-cp scripts/intercept.py "$SKILL_DIR/scripts/"
-cp docs/design.md "$SKILL_DIR/docs/" 2>/dev/null || true
+mkdir -p "$SKILL_DIR/scripts"
+cp skill/SKILL.md "$SKILL_DIR/"
+cp skill/scripts/intercept.py "$SKILL_DIR/scripts/"
 chmod +x "$SKILL_DIR/scripts/intercept.py"
 
 echo "  Skill files copied to $SKILL_DIR"

@@ -1,0 +1,21 @@
+{
+  "name": "promptly-prompt",
+  "description": "Forces AI to understand before executing. Three disciplines: cognition check, requirement understanding, method search.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Recomby AI"
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 $PLUGIN_DIR/skill/scripts/intercept.py"
+          }
+        ]
+      }
+    ]
+  }
+}

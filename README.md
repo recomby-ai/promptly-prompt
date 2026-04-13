@@ -20,23 +20,30 @@ When your brain is foggy, you write bad prompts, get bad answers, and spiral. Th
 
 ## Install
 
+### Plugin marketplace (recommended)
+
+```bash
+claude plugin marketplace add recomby-ai/promptly-prompt
+claude plugin install promptly-prompt@promptly-prompt
+```
+
 ### One-line install
 
 ```bash
 git clone https://github.com/recomby-ai/promptly-prompt.git && cd promptly-prompt && bash install.sh
 ```
 
-This copies skill files to `~/.claude/skills/promptly-prompt/` and auto-configures the hook in `settings.json`. Start a new Claude Code session to activate.
-
 ### Manual install
 
-1. Copy to your Claude Code skills directory:
+1. Copy skill files:
 
 ```bash
-cp -r promptly-prompt ~/.claude/skills/promptly-prompt
+mkdir -p ~/.claude/skills/promptly-prompt/scripts
+cp skill/SKILL.md ~/.claude/skills/promptly-prompt/
+cp skill/scripts/intercept.py ~/.claude/skills/promptly-prompt/scripts/
 ```
 
-2. Add the hook to `~/.claude/settings.json`:
+2. Add hook to `~/.claude/settings.json`:
 
 ```json
 {
@@ -56,7 +63,7 @@ cp -r promptly-prompt ~/.claude/skills/promptly-prompt
 }
 ```
 
-3. Start a new Claude Code session. Done.
+3. Start a new Claude Code session.
 
 ## How It Works
 

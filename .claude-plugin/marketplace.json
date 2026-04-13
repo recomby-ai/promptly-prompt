@@ -1,0 +1,9 @@
+{
+  "name": "promptly-prompt",
+  "plugins": [
+    {
+      "name": "promptly-prompt",
+      "skills": ["./skill"]
+    }
+  ]
+}

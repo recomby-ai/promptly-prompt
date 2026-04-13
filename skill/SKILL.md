@@ -30,24 +30,6 @@ The hook script at `scripts/intercept.py` scores prompt complexity using
 rule-based signals (word count, multi-step indicators, ambiguity words, etc.).
 Simple commands pass through untouched. Complex requests get the full injection.
 
-## Installation
-
-1. Copy this skill to `~/.claude/skills/promptly-prompt/`
-2. Add to `~/.claude/settings.json`:
-
-```json
-{
-  "hooks": {
-    "UserPromptSubmit": [
-      {
-        "type": "command",
-        "command": "python3 ~/.claude/skills/promptly-prompt/scripts/intercept.py"
-      }
-    ]
-  }
-}
-```
-
 ## Explicit Invocation
 
 When invoked directly (e.g., user says "optimize this prompt"), take the user's
