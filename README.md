@@ -84,17 +84,20 @@ cp skill/scripts/intercept.py ~/.claude/skills/promptly-prompt/scripts/
 
 The hook script scores every prompt's complexity using rule-based signals:
 
-| Signal | Effect |
-|--------|--------|
-| Long text (>80 words) | +complex |
-| Multiple sentences | +complex |
-| Multi-step words ("then", "after that", "然后", "接着") | +complex |
-| Ambiguity words ("maybe", "probably", "大概", "可能") | +complex |
-| Code blocks / file paths | -complex |
-| Imperative verbs ("fix", "run", "git") | -complex |
-| Very short (<10 chars) | -complex |
+| Signal | Score |
+|--------|-------|
+| Long text (>80 words / chars for Chinese) | +2 |
+| Medium text (40–80 words) | +1 |
+| Multiple sentences (>3) | +1 |
+| Multi-step words — each match ("then", "然后", …), cap +3 | +2 each |
+| Ambiguity words — each match ("maybe", "大概", …), cap +3 | +1 each |
+| Multiple questions (>1 `?`) | +1 |
+| Code blocks / file paths | −2 |
+| Imperative verb at start ("fix", "run", "git") | −1 |
+| Slash command (`/commit`) | −3 |
+| Very short (<10 chars) | −3 |
 
-Score >= 3 triggers injection. Below 3 passes through silently.
+Score ≥ 3 triggers injection. Below 3 passes through silently.
 
 No API calls. No dependencies beyond Python stdlib. Runs in < 50ms.
 
