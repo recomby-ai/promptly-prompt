@@ -6,17 +6,16 @@ A Claude Code skill that forces AI to **understand before executing**.
 
 ## What It Does
 
-A `UserPromptSubmit` hook that automatically intercepts complex requests and injects three disciplines:
+A `UserPromptSubmit` hook that automatically intercepts complex requests and injects two disciplines:
 
-1. **AI Capability Boundaries** — Forces AI to state what it can and can't do for this specific task, what context it's missing, and what biases it has in this domain.
-2. **Requirement Understanding** — Forces AI to deeply understand your request, surface implicit needs (audience, downstream use, unstated constraints, failure modes), flag ambiguities, and wait for your confirmation before executing.
-3. **Method Search** — Forces AI to search for existing methodologies, frameworks, open-source projects, and proven patterns before building from scratch. Use tools to search, give specific names, not vague suggestions.
+1. **Restate, then pause if needed** — Forces AI to echo your request in its own words, surface implicit constraints, and name what would make the answer wrong. If anything is ambiguous or the planned approach might not be what you wanted, AI stops and asks before acting. Trivial requests skip the restatement.
+2. **Super-dimensional view** — Forces AI to step back before solving from memory: name the domain the problem belongs to, search for existing methodologies, frameworks, libraries, and prior art, then bring that specialist knowledge to bear. Cite specific names, not vague gestures. If nothing fits, say so and explain why.
 
 Simple commands (`git status`, `read file.py`, `/commit`) pass through untouched.
 
 ## Why
 
-When your brain is foggy, you write bad prompts, get bad answers, and spiral. This hook acts as a guardrail — it forces AI to pause, think, and confirm understanding before diving in. The core insight: most bad AI answers come from missing context, not missing prompt tricks.
+When your brain is foggy, you write bad prompts, get bad answers, and spiral. This hook acts as a guardrail — it forces AI to pause, restate, search the relevant domain, and confirm direction before diving in. The core insight: most bad AI answers come from missing context and skipped prior art, not missing prompt tricks.
 
 ## Install
 

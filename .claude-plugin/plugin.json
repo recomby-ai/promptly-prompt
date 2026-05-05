@@ -1,7 +1,7 @@
 {
   "name": "promptly-prompt",
-  "description": "Forces AI to understand before executing. Three disciplines: AI capability boundaries, requirement understanding, method search.",
-  "version": "1.1.0",
+  "description": "Forces AI to understand before executing. Two disciplines: restate-and-pause-if-needed, super-dimensional view (search the domain before solving from memory).",
+  "version": "1.2.0",
   "author": {
     "name": "Recomby AI",
     "email": "hello@recomby.ai"

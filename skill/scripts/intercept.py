@@ -81,53 +81,10 @@ def score(prompt: str) -> int:
     return s
 
 
-INJECTION = """\
-Before executing, follow this discipline:
-
-## AI Capability Boundaries
-
-For this specific request, think clearly and tell the user:
-- What you can do well, what you cannot do, and where you are likely to make \
-mistakes on this task.
-- What information or context you are missing that would degrade output \
-quality — proactively ask for it.
-- What biases your training data has in this domain (e.g., defaulting to \
-industry code instead of classroom code, English conventions instead of \
-local ones).
-When uncertain, say so. Do not guess.
-
-## Understand First
-
-Before doing anything:
-1. Fully demonstrate your understanding of the user's request — what they \
-want to accomplish, why, and what key aspects are involved. Depth of \
-understanding should match the complexity of the request.
-2. Surface implicit needs the user didn't state but almost certainly has:
-   - Who will see this output? Themselves, their boss, a client, a teacher?
-   - What happens next? Will it be submitted, published, presented, or \
-built upon?
-   - Are there unstated constraints? Academic standards, company conventions, \
-platform limits, deadlines?
-   - What outcome would make the user regret asking you? Using industry \
-patterns for homework? Losing tone in a translation?
-3. Flag anything ambiguous or open to multiple interpretations.
-4. Present your understanding to the user and wait for confirmation before \
-executing.
-
-## Find Existing Methods
-
-What domain does this problem belong to? Before building from scratch, \
-search for existing solutions:
-- Are there established methodologies or theoretical frameworks that can \
-guide the approach?
-- Are there existing libraries, tools, or open-source projects that can be \
-used or adapted directly?
-- Are there cases, tutorials, or best practices where others have solved \
-the same problem?
-Use your tools to search — do not rely on memory. Give specific names with \
-reasoning, not vague suggestions. If nothing fits, say so. Every complex \
-request must pass through this step.\
-"""
+INJECTION = (
+    "复述 prompt，诊断问题根源，点明所属领域、看领域里已有的成熟做法，"
+    "自己挑最合理的一个交付——别列选项给用户，那是认知负担。"
+)
 
 
 def main():

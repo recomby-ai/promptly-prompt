@@ -1,33 +1,30 @@
 ---
 name: promptly-prompt
 description: |
-  Prompt optimization through context, not decoration. Trigger when user asks
-  to optimize, improve, or write a prompt for any AI model. Applies three
-  disciplines: AI capability boundaries (what AI can/can't do for this task),
-  deep requirement understanding (including implicit needs, audience, constraints,
-  failure modes), and method search (find existing frameworks/tools/patterns
-  before building from scratch).
+  Forces two things on every non-trivial request: restate the user's intent
+  before answering, and take a super-dimensional view — name the domain,
+  search for existing methods and prior art, bring specialist knowledge in
+  before improvising.
 ---
 
 # promptly-prompt
 
 AI answer quality depends on context quality, not prompt tricks.
 
-This skill operates via a `UserPromptSubmit` hook that automatically injects
-three disciplines into complex requests:
+This skill operates via a `UserPromptSubmit` hook that injects two
+disciplines into complex requests:
 
-1. **AI capability boundaries** — force AI to state what it can and can't do
-   for this task, what context it's missing, and what biases it has.
+1. **Restate, then pause if needed** — echo the user's request in your own
+   words, surface implicit constraints, name what would make the answer
+   wrong. If anything is ambiguous or your planned approach might not be
+   endorsed, stop and ask before acting. If the restatement makes it clear
+   there is no disagreement, continue. Skip the restatement only when the
+   request is genuinely trivial.
 
-2. **Requirement understanding** — deeply understand what the user wants,
-   surface implicit needs (audience, downstream use, unstated constraints,
-   failure modes), flag ambiguities, show understanding to user, wait for
-   confirmation before executing.
-
-3. **Method search** — for every complex problem, search for existing
-   methodologies, frameworks, open-source projects, or proven patterns.
-   Use tools to search, give specific names with reasoning, not vague
-   suggestions. If nothing fits, say so.
+2. **Super-dimensional view** — before solving from memory, name the domain,
+   search for established methodologies, frameworks, libraries, and prior
+   art, then bring that specialist knowledge to bear. Cite specific names,
+   not vague gestures. If nothing fits, say so and explain why.
 
 The hook script at `scripts/intercept.py` scores prompt complexity using
 rule-based signals. Simple commands pass through untouched. Complex requests
@@ -35,8 +32,7 @@ get the full injection.
 
 ## Explicit Invocation
 
-When invoked directly (e.g., user says "optimize this prompt"), take the user's
-raw prompt and apply the three disciplines manually: assess AI capability
-boundaries for the task, deeply understand the requirement including implicit
-needs, and search for existing methods. Then rewrite the prompt with the
-missing context filled in.
+When invoked directly (e.g., user says "optimize this prompt"), apply the
+two disciplines manually: restate the user's intent with implicit needs
+surfaced, then locate the domain and the existing methods that belong to
+it. Rewrite the prompt with that context filled in.
