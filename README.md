@@ -39,45 +39,8 @@ Or inside a Claude Code session, prefix with `!`:
 
 ```bash
 claude plugin uninstall promptly-prompt@promptly-prompt
+claude plugin marketplace remove promptly-prompt
 ```
-
-### One-line install
-
-```bash
-git clone https://github.com/recomby-ai/promptly-prompt.git && cd promptly-prompt && bash install.sh
-```
-
-### Manual install
-
-1. Copy skill files:
-
-```bash
-mkdir -p ~/.claude/skills/promptly-prompt/scripts
-cp skill/SKILL.md ~/.claude/skills/promptly-prompt/
-cp skill/scripts/intercept.py ~/.claude/skills/promptly-prompt/scripts/
-```
-
-2. Add hook to `~/.claude/settings.json`:
-
-```json
-{
-  "hooks": {
-    "UserPromptSubmit": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ~/.claude/skills/promptly-prompt/scripts/intercept.py"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-3. Start a new Claude Code session.
 
 ## How It Works
 
